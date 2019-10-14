@@ -9,24 +9,27 @@ int vic(int a, int b)
 {
 
 	float P;
-
+  
 	P = pow(a,2)+pow(b,2)+sqrt(pow(a,2)+pow(b,2));
 
 	return P;
-
 }
 
 int main()
 
 {
 
-	int a, b, o;
+	float a, b, o;
 
 	cout << "vvedite katet 1 'a': ";
 	cin >> a;
 	cout << "vvedite katet 2 'b': ";
 	cin >> b;
-
+   
+    if (a == 0 || b == 0){
+        cout << "'0' is unacceptable. Try again.";
+        return 0;
+    }
 	o = vic(a, b);
 
 	cout << o << endl;
@@ -39,42 +42,37 @@ int main()
 
 
 
-#include <iostream>
-
-#include <math.h>
-
 using namespace std;
-
-int vic(int x, int y)
+void vic (int x, int y, int *s, int *p)
 
 {
-    (x > y)?
-    (
-        cout << "Max = " << x << endl,
-        cout << "Min = " << y << endl
-	):
-	(
-	    cout << "Max = " << y << endl,
-        cout << "Min = " << x << endl 
-	);
-
-
-	return 0;
+    if (x >> y){
+        *s = x;
+        *p = y;
+        
+    }
+    else {
+        *s = y;
+        *p = x;
+    }
+    
 
 }
+
 
 int main()
 
 {
 
-	int x, y;
+	int a, b, s, p;
 
-	cout << "x:";
-	cin >> x;
-	cout << "y: ";
-	cin >> y;
+	cout << "a:";
+	cin >> a;
+	cout << "b: ";
+	cin >> b;
 
-	vic(x, y);
+	vic(a, b, &s, &p);
+	cout << "a= " << s << " b= " << p;
 
 	return 0;
 
