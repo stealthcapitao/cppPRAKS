@@ -1,0 +1,226 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+это 4.4
+class Sphere
+{
+private:
+    float x, y, z, r; 
+public: 
+// Конструктор 1 (с параметрами)
+Sphere(float xc,float yc,float zc,float rc)
+{
+ x=xc;
+ y=yc;
+ z=zc;
+ r=rc;
+}
+// Конструктор 2 (без параметров)
+Sphere(){}
+// Деструктор 
+~Sphere(){}
+// Функция расчета объема
+
+
+float ob()
+{	return r*r*r*4*M_PI/3; }
+// Функция расчета площади поверхности 
+float pov()
+{	return r*r*4*M_PI; }
+
+
+
+// метод модифицирующий поле х
+void setX(float xc)
+{x=xc;};
+// метод модифицирующий поле y
+void setY(float yc)
+{y=yc;};
+// метод модифицирующий поле z
+void setZ(float zc)
+{z=zc;};
+// метод модифицирующий поле r
+void setR(float rc)
+{r=rc;};
+
+
+// метод доступа к полю х
+float getX()
+{return x;};
+
+// метод доступа к полю y
+float getY()
+{return y;};
+
+// метод доступа к полю z
+float getZ()
+{return z;};
+
+// метод доступа к полю r
+float getR()
+{return r;};
+
+void output () {
+cout <<"\n Sphere:";
+cout <<" Coordinates:\n";
+cout << x << "  " << y << "  " << z;
+cout <<"\n R: " << r;
+cout <<"\n V: " << ob();
+cout <<"\n S pov: " << pov();
+};
+
+};
+
+
+int main()
+{
+    
+    
+    float x1,y1,z1,r1;
+    cout <<"\n Enter Coordinates s1: (x, y, z):";
+    cin>>x1>>y1>>z1;
+    cout <<"\n Enter R s1 (r):";
+    cin>>r1;
+
+
+	Sphere s1(x1, y1, z1, r1); // Создана сфера s1
+    
+    if (s1.getX()<0 || s1.getY()<0 || s1.getZ()<0 || s1.getR()<0) {
+        cout << "Error";
+        exit(0);
+    }
+    
+    
+    s1.output();
+    
+
+    Sphere s2;  // Создана сфера s2
+    float x2,y2,z2,r2;
+    cout <<"\n Enter Coordinates s2: (x, y, z): ";
+    cin>>x2>>y2>>z2;
+    cout <<"\n Enter R s2 (r):";
+    cin>>r2;
+
+    s2.setX(x2);
+    s2.setY(y2);
+    s2.setZ(z2);
+    s2.setR(r2);
+
+    if (s2.getX()<0 || s2.getY()<0 || s2.getZ()<0 || s2.getR()<0) {
+        cout << "Error";
+        exit(0);
+    }
+
+    s2.output();
+    
+    return 0;
+    
+}
+
+
+
+
+это 4.3
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+class Sphere
+{
+
+private:
+    float x,y,z; 	// описываются закрытые данные класса
+public:
+    float r;	// описываются открытые данные класса
+// Конструктор 1 
+Sphere(float xc,float yc,float zc,float rc)
+{
+ x=xc;
+ y=yc;
+ z=zc;
+ r=rc;
+}
+// Конструктор 2
+Sphere(){}
+// Деструктор 
+~Sphere(){}
+// Функция расчета объема
+float ob()
+{	return r*r*r*4*M_PI/3; }
+// Функция расчета площади поверхности 
+float pov()
+{	return r*r*4*M_PI; }
+
+// метод модифицирующий поле х
+void setX(float xc)
+{x=xc;}
+// метод модифицирующий поле y
+void setY(float yc)
+{y=yc;}
+// метод модифицирующий поле z
+void setZ(float zc)
+{z=zc;}
+// метод модифицирующий поле R
+
+
+// метод доступа к полю х
+float getX()
+{return x;}
+// метод доступа к полю н
+float getY()
+{return y;}
+// метод доступа к полю z
+float getZ()
+{return z;}
+// метод доступа к полю R
+
+};
+
+int main()
+{
+float x1,y1,z1,r1;
+cout <<"\nВведите координаты центра 1-й сферы (x, y, z):";
+cin>>x1>>y1>>z1;
+cout <<"\nВведите радиус 1-й сферы (r):";
+cin>>r1;
+
+Sphere s1(x1,y1,z1,r1);  // Создана сфера s1
+
+cout <<"\nСоздана сфера s1";
+cout <<" с координатами центра\n\t";
+cout << s1.getX() << "  " << s1.getY() << "  " << s1.getZ();
+cout <<"\n\t и радиусом " << s1.r;
+cout <<"\n объем сферы " << s1.ob();
+cout <<"\n площадь поверхности " << s1.pov();
+
+Sphere s2;  // Создана сфера s2
+float x2,y2,z2,r2;
+cout <<"\nВведите координаты центра 2-й сферы (x, y, z):";
+cin>>x2>>y2>>z2;
+cout <<"\nВведите радиус 2-й сферы (r):";
+cin>>r2;
+
+s2.setX(x2);
+s2.setY(y2);
+s2.setZ(z2);
+s2.r = r2;
+
+cout <<"\nСфера s2";
+cout <<" с координатами центра\n\t";
+cout << s2.getX() << "  " << s2.getY() << "  " << s2.getZ();
+cout <<"\n\t и радиусом " << s2.r;
+cout <<"\n объем сферы " << s2.ob();
+cout <<"\n площадь поверхности " << s2.pov();
+}
+
+
