@@ -1,0 +1,98 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+class Sphere
+{
+
+private:
+    float x,y,z; 	// описываются закрытые данные класса
+public:
+    float r;	// описываются открытые данные класса
+    static int kol; // Описание данного kol_vo
+// Конструктор 1 
+Sphere(float xc,float yc,float zc,float rc)
+{
+ x=xc;
+ y=yc;
+ z=zc;
+ r=rc;
+ kol++;//При создании новой сферы количество  сфер увеличивается на 1     
+}
+// Конструктор 2
+Sphere(){ kol++;}//При создании новой сферы количество  сфер увеличивается на 1
+
+~Sphere(){ kol--;}//При разрушении сферы количество уменьшается  на 1
+
+float ob()
+{	return r*r*r*4*M_PI/3; }
+// Функция расчета площади поверхности 
+float pov()
+{	return r*r*4*M_PI; }
+
+// метод модифицирующий поле х
+void setX(float xc)
+{x=xc;}
+// метод модифицирующий поле y
+void setY(float yc)
+{y=yc;}
+// метод модифицирующий поле z
+void setZ(float zc)
+{z=zc;}
+// метод модифицирующий поле R
+
+
+// метод доступа к полю х
+float getX()
+{return x;}
+// метод доступа к полю н
+float getY()
+{return y;}
+// метод доступа к полю z
+float getZ()
+{return z;}
+// метод доступа к полю R
+
+};
+
+int Sphere::kol=0;// Присвоение kol_vo начального значения 0
+
+int main()
+{
+float x1,y1,z1,r1;
+cout <<"\nВведите координаты центра 1-й сферы (x, y, z):";
+cin>>x1>>y1>>z1;
+cout <<"\nВведите радиус 1-й сферы (r):";
+cin>>r1;
+
+Sphere s1(x1,y1,z1,r1);  // Создана сфера s1
+
+cout <<"\nСоздана сфера s1";
+cout <<" с координатами центра\n\t";
+cout << s1.getX() << "  " << s1.getY() << "  " << s1.getZ();
+cout <<"\n\t и радиусом " << s1.r;
+cout <<"\n объем сферы " << s1.ob();
+cout <<"\n площадь поверхности " << s1.pov();
+cout<<"\n Количество сфер "<< s1.kol;
+
+Sphere s2;  // Создана сфера s2
+float x2,y2,z2,r2;
+cout <<"\nВведите координаты центра 2-й сферы (x, y, z):";
+cin>>x2>>y2>>z2;
+cout <<"\nВведите радиус 2-й сферы (r):";
+cin>>r2;
+
+s2.setX(x2);
+s2.setY(y2);
+s2.setZ(z2);
+s2.r = r2;
+
+cout <<"\nСфера s2";
+cout <<" с координатами центра\n\t";
+cout << s2.getX() << "  " << s2.getY() << "  " << s2.getZ();
+cout <<"\n\t и радиусом " << s2.r;
+cout <<"\n объем сферы " << s2.ob();
+cout <<"\n площадь поверхности " << s2.pov();
+cout<<"\n Количество сфер "<<s2.kol;
+}
