@@ -1,0 +1,113 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+class Student{
+    private:
+        string sur, name, sname;
+        string sub[3] = {"Informatika","Osn Algorytmy","Teory Algorytmy"};
+        int asses[3];
+        float average_ball;
+    public:
+         
+    //Constructor with parametees
+    Student(string sur1, string name1, string sname1 , int ozen_inf , int ozen_osn_alg, int ozen_al){
+        sur= sur1;
+        name=name1;
+        sname=sname1;
+        asses[0]= ozen_inf;
+        asses[1]=ozen_osn_alg;
+        asses[2]=ozen_al;
+    }
+
+
+    //GetR Sur;
+    string get_sur()
+    {return sur;}
+    
+    //GetR Name; 
+    string get_name()
+    {return name;}
+    
+    //GetR Sname;
+    string get_sname()
+    {return sname;}
+    
+    //GetR Informatika
+    string get_subj_inf()
+    {return sub[0];}
+    
+     //GetR Osn Algorytmy
+    string get_subj_alg1()
+    {return sub[1];}
+    
+    //GetR Teory Algorytmy
+    string get_subj_alg2()
+    {return sub[2];}
+    
+    //GetR Ozen_inf
+    int get_ozen_inf()
+    {return asses[0];}
+    
+    //GetR Ozen_osn_Alg
+    int get_ozen_osn_alg()
+    {return asses[1];}
+    
+    //GetR Ozen Alg
+    int get_ozen_al()
+    {return asses[2];}
+    
+    
+    
+    
+    float calculate_average_ball(){
+        float sum = 0;
+        for(int i=0; i < 4; i++){
+            sum += asses[i];
+        }
+        average_ball = sum / 3.0;
+    }
+    
+    
+};
+
+
+
+
+
+int main()
+{
+   string sur_1,name_1,sname_1 , sub_1[3];
+   int inf,alg1,alg2;
+   
+   cout << "Enter Asses: 1.Informatika 2.Algorytmy 3.Teory Algorytmy:" << endl;
+   cin >> inf >> alg1 >> alg2;
+   
+   int ass_1[3] = {inf, alg1, alg2};
+   
+   
+   cout << "Enter Student: 1.Sure 2.Name 3.SurName:" << endl;
+   cin >> sur_1 >> name_1 >> sname_1;
+   
+   
+   Student s1(sur_1, name_1, sname_1, ass_1[0] , ass_1[1] , ass_1[2]); //Create Student
+   
+   
+//     if( (s1.get_sur() == "") || (s1.get_name() == "") || (s1.get_sname() == "") ){
+//       cout << "error" <<endl;
+//       exit(0);
+//   }
+
+   cout << "Student:" << endl;
+   cout << s1.get_sur() << " " << s1.get_name() << " " << s1.get_sname() <<endl;
+   cout << "Asses of SUBJECT:" << endl;
+   cout << s1.get_subj_inf() << " " << s1.get_ozen_inf() << endl;
+   cout << s1.get_subj_alg1() << " " <<s1.get_ozen_osn_alg() << endl;
+   cout << s1.get_subj_alg2() << " " <<s1.get_ozen_al() << endl;
+   
+   //average_ball
+   cout << "average_ball:" << s1.calculate_average_ball() << endl;
+    
+    
+    return 0;
+}
