@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Name {
+    public: string name, fam, otch;
+    Name(string name, string fam, string otch){
+        this -> name = name;
+        this -> fam = fam;
+        this -> otch = otch;
+    cout << "/n Constructor class Name";
+    }
+    ~Name(){
+        cout <<"/n Destructor class Name";
+    }
+};
+
+class Job {
+    public: string pos, comp;
+    Job (string pos, string comp){
+        this -> pos = pos;
+        this -> comp = comp;
+    cout << "/n Constructor class Job";
+    }
+    ~Job(){
+        cout <<"/n Destructor class Job";
+    }
+};
+
+class Person: public Name, public Job{
+    public:
+    int age;
+    char sex;
+    Person (string name1, string fam1, string otch1, string pos1, string comp1, int age1, int sex1):
+     Name (name1, otch1, fam1),
+     Job (comp1, pos1){
+         age = age1;
+         sex = sex1;
+        cout << "/n Constructor class Person";
+     }
+     ~Person(){
+         cout << "/n Destructor class Person";
+     }
+     
+void output () {
+cout<< "\nИмя.............."<<name<<
+"\nОтчество......"<<otch<<
+"\nФамилия......."<<fam<<
+"\nВозраст......."<<age<<
+"\nПол..........."<<sex<<
+"\nКомпания......"<<comp<<
+"\nДолжность....."<<pos;
+}
+     
+};
+
+
+
+
+int main(){
+Person p1("Kolontaenko", "Roman", "Vladlenovich", "Mcdonalds", "Master 4istoti", 18, 'd');
+cout<<"\nВывод данных:\n";
+p1.output();
+return 0;
+};
